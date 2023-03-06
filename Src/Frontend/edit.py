@@ -1,28 +1,33 @@
 import streamlit as st
 
+stList = ["家賃", "光熱費", "食費","日用品","交際費","秘密のお金"]
 
 def init():
-    st.write('項目編集画面の内容')
+    with st.form("my_form2", clear_on_submit=False):
+        itemList = st.selectbox(
+        '項目:',stList
+        )
 
-    aaa = st.selectbox(
-        '家系項目:',
-        [1, 2, 3],
-    )
+        col1, col2 = st.columns(2)
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-        if st.button(label='登録'):
-            test1(aaa)
-
-    with col2:
-        if st.button(label='削除'):
-            test2(aaa)
-
-
-def test1(aaa):
-    st.text(aaa)
+        #登録ボタン
+        with col1:
+            submitted = st.form_submit_button("登録")
+        
+        #削除ボタン
+        with col2:
+            submitted_del = st.form_submit_button("削除")
+        
+        if submitted:
+            ret_submitted()
+        if submitted_del:
+            stList.remove(itemList)
+            ret_submitted_del(itemList)
 
 
-def test2(bbb):
-    st.text(bbb)
+def ret_submitted():
+    st.success('未実装')
+
+def ret_submitted_del(deiItem):
+    st.success(f'"{deiItem}"を削除しました', icon="✅")
+
