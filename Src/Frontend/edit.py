@@ -26,7 +26,7 @@ def chg_item():
         st.session_state.retFlg = False
         st.session_state.retMsg = '空文字は登録できません'
     else:
-        if session_state.input_new in st.session_state.ItemList:
+        if session_state.input in st.session_state.ItemList:
             st.session_state.retFlg = False
             st.session_state.retMsg = '既に存在しています'
         else:
