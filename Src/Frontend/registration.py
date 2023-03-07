@@ -1,13 +1,10 @@
 import streamlit as st
-
+import edit as edit
 
 def init():
     with st.form("my_form", clear_on_submit=False):
-        #項目
-        tmpItem = st.selectbox(
-            '項目:',
-            ["家賃", "光熱費", "食費","日用品","交際費","秘密のお金"],
-        )
+        #登録する項目
+        tmpItem = st.selectbox('項目:',edit.stList,)
 
         #日時、金額
         col1, col2 = st.columns(2)
