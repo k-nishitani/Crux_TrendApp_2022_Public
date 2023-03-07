@@ -5,47 +5,47 @@ stList = ["家賃", "光熱費", "食費","日用品","交際費","秘密のお�
 #各処理-----------------------------------------------------------------
 #追加
 def add_item():
-    if st.session_state["input_new"] == '':
+    if session_state.input_new == '':
         st.session_state.retFlg = False
         st.session_state.retMsg = '空文字は登録できません'
     else:
-        if st.session_state["input_new"] in st.session_state.ItemList:
+        if session_state.input_new in st.session_state.ItemList:
             st.session_state.retFlg = False
             st.session_state.retMsg = '既に存在しています'
         else:
-            st.session_state.ItemList.append(st.session_state["input_new"])
+            st.session_state.ItemList.append(session_state.input_new)
             st.session_state.retFlg = True
-            st.session_state.retMsg = f'"{st.session_state["input_new"]}"を登録しました'
+            st.session_state.retMsg = f'"{session_state.input_new}"を登録しました'
 
     #入力内容初期化
-    st.session_state["input_new"] = ""
+    session_state.input_new = ""
 
 #編集
 def chg_item():
-    if st.session_state["input"] == "":
+    if st.session_state.input == "":
         st.session_state.retFlg = False
         st.session_state.retMsg = '空文字は登録できません'
     else:
-        if st.session_state["input_new"] in st.session_state.ItemList:
+        if session_state.input_new in st.session_state.ItemList:
             st.session_state.retFlg = False
             st.session_state.retMsg = '既に存在しています'
         else:
             #インデックス取得
-            tmpIndex = st.session_state.ItemList.index(st.session_state["selectbox"])
+            tmpIndex = st.session_state.ItemList.index(st.session_state.selectbox)
             #置き換え
-            st.session_state.ItemList[tmpIndex]=st.session_state["input"]
+            st.session_state.ItemList[tmpIndex]=st.session_state.input
             st.session_state.retFlg = True
-            st.session_state.retMsg = f'"{st.session_state["selectbox"]}"を"{st.session_state["input"]}"に編集しました'
+            st.session_state.retMsg = f'"{st.session_state.selectbox}"を"{st.session_state.input}"に編集しました'
 
     #入力内容初期化
-    st.session_state["input"] = ""
+    st.session_state.input = ""
 
 #削除
 def del_item():
-    st.session_state.ItemList.remove(st.session_state["selectbox"])
+    st.session_state.ItemList.remove(st.session_state.selectbox)
 
     st.session_state.retFlg = True
-    st.session_state.retMsg = f'"{st.session_state["selectbox"]}"を削除しました'
+    st.session_state.retMsg = f'"{st.session_state.selectbox}"を削除しました'
 
 #画面------------------------------------------------------------------
 def init():
